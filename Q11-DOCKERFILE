@@ -1,0 +1,39 @@
+# Multi-stage Dockerfile for Spring Boot Healthcare Management System
+
+# Stage 1: Build stage
+FROM maven:3.8.4-openjdk-17 AS build
+WORKDIR /app
+
+# Copy pom.xml and download dependencies
+COPY pom.xml .
+RUN mvn dependency:go-offline -B
+
+# Copy source code and build the application
+COPY src ./src
+RUN mvn clean package -DskipTests
+
+# Stage 2: Runtime stage
+FROM openjdk:17-jre-slim AS runtime
+
+# Create non-root user for security
+RUN groupadd -r healthcare && useradd -r -g healthcare healthcare
+
+# Set working directory
+WORKDIR /app
+
+# Copy the JAR file from build stage
+COPY --from=build /app/target/*.jar app.jar
+
+# Change ownership to non-root user
+RUN chown -R healthcare:healthcare /app
+USER healthcare
+
+# Expose port
+EXPOSE 8080
+
+# Health check
+HEALTHCHECK --interval=30s --timeout=3s --start-period=60s --retries=3 \
+    CMD curl -f http://localhost:8080/actuator/health || exit 1
+
+# Run the application
+ENTRYPOINT ["java", "-jar", "app.jar"]
