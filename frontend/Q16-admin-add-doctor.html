@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard - Add Doctor | Healthcare Management System</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #f5f5f5;
+            min-height: 100vh;
+        }
+        
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 15px 30px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        .header h1 {
+            font-size: 24px;
+            margin-bottom: 5px;
+        }
+        
+        .header p {
+            opacity: 0.9;
+            font-size: 14px;
+        }
+        
+        .nav-bar {
+            background: white;
+            padding: 15px 30px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            display: flex;
+            gap: 30px;
+            align-items: center;
+        }
+        
+        .nav-item {
+            padding: 8px 16px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+        
+        .nav-item.active {
+            background: #667eea;
+            color: white;
+        }
+        
+        .nav-item:hover {
+            background: #e9ecef;
+        }
+        
+        .nav-item.active:hover {
+            background: #5a6fd8;
+        }
+        
+        .main-content {
+            max-width: 800px;
+            margin: 30px auto;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            overflow: hidden;
+        }
+        
+        .form-header {
+            background: #667eea;
+            color: white;
+            padding: 20px 30px;
+            text-align: center;
+        }
+        
+        .form-header h2 {
+            font-size: 22px;
+            margin-bottom: 5px;
+        }
+        
+        .form-header p {
+            opacity: 0.9;
+            font-size: 14px;
+        }
+        
+        .form-container {
+            padding: 30px;
+        }
+        
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin-bottom: 20px;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .form-group.full-width {
+            grid-column: 1 / -1;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            color: #333;
+            font-weight: 500;
+        }
+        
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px 15px;
+            border: 2px solid #e1e1e1;
+            border-radius: 8px;
+            font-size: 16px;
+            transition: border-color 0.3s;
+        }
+        
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #667eea;
+        }
+        
+        .form-group textarea {
+            height: 100px;
+            resize: vertical;
+        }
+        
+        .availability-section {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+        }
+        
+        .availability-section h3 {
+            color: #333;
+            margin-bottom: 15px;
+            font-size: 18px;
+        }
+        
+        .days-checkbox {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+            gap: 10px;
+            margin-bottom: 15px;
+        }
+        
+        .checkbox-group {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .checkbox-group input[type="checkbox"] {
+            width: auto;
+        }
+        
+        .time-inputs {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+        }
+        
+        .submit-btn {
+            width: 100%;
+            padding: 15px;
+            background: linear-gradient(135deg, #28a745 0%, #20c997 100%);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 18px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+        
+        .submit-btn:hover {
+            transform: translateY(-2px);
+        }
+        
+        .required {
+            color: #dc3545;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>Healthcare Management System</h1>
+        <p>Admin Dashboard - Smart Clinical Management Platform</p>
+    </div>
+    
+    <div class="nav-bar">
+        <div class="nav-item">Dashboard</div>
+        <div class="nav-item">Doctors</div>
+        <div class="nav-item active">Add Doctor</div>
+        <div class="nav-item">Patients</div>
+        <div class="nav-item">Appointments</div>
+        <div class="nav-item">Reports</div>
+        <div class="nav-item">Settings</div>
+    </div>
+    
+    <div class="main-content">
+        <div class="form-header">
+            <h2>Add New Doctor</h2>
+            <p>Register a new medical professional to the system</p>
+        </div>
+        
+        <div class="form-container">
+            <form id="addDoctorForm">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="firstName">First Name <span class="required">*</span></label>
+                        <input type="text" id="firstName" name="firstName" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="lastName">Last Name <span class="required">*</span></label>
+                        <input type="text" id="lastName" name="lastName" required>
+                    </div>
+                </div>
+                
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="email">Email Address <span class="required">*</span></label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="phone">Phone Number <span class="required">*</span></label>
+                        <input type="tel" id="phone" name="phone" required>
+                    </div>
+                </div>
+                
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="license">Medical License <span class="required">*</span></label>
+                        <input type="text" id="license" name="license" placeholder="MD123456" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="specialization">Specialization <span class="required">*</span></label>
+                        <select id="specialization" name="specialization" required>
+                            <option value="">Select Specialization</option>
+                            <option value="Cardiology">Cardiology</option>
+                            <option value="Neurology">Neurology</option>
+                            <option value="Orthopedics">Orthopedics</option>
+                            <option value="Pediatrics">Pediatrics</option>
+                            <option value="Dermatology">Dermatology</option>
+                            <option value="Psychiatry">Psychiatry</option>
+                            <option value="General Medicine">General Medicine</option>
+                        </select>
+                    </div>
+                </div>
+                
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="department">Department</label>
+                        <input type="text" id="department" name="department" placeholder="e.g., Emergency, ICU">
+                    </div>
+                    <div class="form-group">
+                        <label for="experience">Years of Experience</label>
+                        <input type="number" id="experience" name="experience" min="0" max="50">
+                    </div>
+                </div>
+                
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="fee">Consultation Fee ($)</label>
+                        <input type="number" id="fee" name="fee" min="0" step="0.01" placeholder="150.00">
+                    </div>
+                    <div class="form-group">
+                        <label for="office">Office Location</label>
+                        <input type="text" id="office" name="office" placeholder="Room 201, Block A">
+                    </div>
+                </div>
+                
+                <div class="form-group full-width">
+                    <label for="qualification">Qualification</label>
+                    <textarea id="qualification" name="qualification" placeholder="e.g., MD in Cardiology, Harvard Medical School"></textarea>
+                </div>
+                
+                <div class="availability-section">
+                    <h3>Doctor Availability</h3>
+                    
+                    <label>Available Days:</label>
+                    <div class="days-checkbox">
+                        <div class="checkbox-group">
+                            <input type="checkbox" id="monday" name="days" value="Monday">
+                            <label for="monday">Monday</label>
+                        </div>
+                        <div class="checkbox-group">
+                            <input type="checkbox" id="tuesday" name="days" value="Tuesday">
+                            <label for="tuesday">Tuesday</label>
+                        </div>
+                        <div class="checkbox-group">
+                            <input type="checkbox" id="wednesday" name="days" value="Wednesday">
+                            <label for="wednesday">Wednesday</label>
+                        </div>
+                        <div class="checkbox-group">
+                            <input type="checkbox" id="thursday" name="days" value="Thursday">
+                            <label for="thursday">Thursday</label>
+                        </div>
+                        <div class="checkbox-group">
+                            <input type="checkbox" id="friday" name="days" value="Friday">
+                            <label for="friday">Friday</label>
+                        </div>
+                        <div class="checkbox-group">
+                            <input type="checkbox" id="saturday" name="days" value="Saturday">
+                            <label for="saturday">Saturday</label>
+                        </div>
+                        <div class="checkbox-group">
+                            <input type="checkbox" id="sunday" name="days" value="Sunday">
+                            <label for="sunday">Sunday</label>
+                        </div>
+                    </div>
+                    
+                    <div class="time-inputs">
+                        <div class="form-group">
+                            <label for="timeFrom">Available From</label>
+                            <input type="time" id="timeFrom" name="timeFrom" value="09:00">
+                        </div>
+                        <div class="form-group">
+                            <label for="timeTo">Available To</label>
+                            <input type="time" id="timeTo" name="timeTo" value="17:00">
+                        </div>
+                    </div>
+                </div>
+                
+                <button type="submit" class="submit-btn">Add Doctor to System</button>
+            </form>
+        </div>
+    </div>
+    
+    <script>
+        document.getElementById('addDoctorForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Doctor successfully added to the Smart Clinical Management System!');
+        });
+        
+        // Pre-select common days
+        document.getElementById('monday').checked = true;
+        document.getElementById('tuesday').checked = true;
+        document.getElementById('wednesday').checked = true;
+        document.getElementById('thursday').checked = true;
+        document.getElementById('friday').checked = true;
+    </script>
+</body>
+</html>

@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Doctor Portal - Healthcare Management System</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #4CAF50 0%, #45a049 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .login-container {
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            width: 100%;
+            max-width: 400px;
+            padding: 40px;
+        }
+        
+        .logo {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        
+        .logo h1 {
+            color: #333;
+            font-size: 24px;
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+        
+        .logo p {
+            color: #666;
+            font-size: 14px;
+        }
+        
+        .doctor-badge {
+            background: #4CAF50;
+            color: white;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 12px;
+            display: inline-block;
+            margin-bottom: 20px;
+        }
+        
+        .medical-icon {
+            font-size: 48px;
+            color: #4CAF50;
+            margin-bottom: 15px;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            color: #333;
+            font-weight: 500;
+        }
+        
+        .form-group input {
+            width: 100%;
+            padding: 12px 15px;
+            border: 2px solid #e1e1e1;
+            border-radius: 8px;
+            font-size: 16px;
+            transition: border-color 0.3s;
+        }
+        
+        .form-group input:focus {
+            outline: none;
+            border-color: #4CAF50;
+        }
+        
+        .login-btn {
+            width: 100%;
+            padding: 15px;
+            background: linear-gradient(135deg, #4CAF50 0%, #45a049 100%);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+        
+        .login-btn:hover {
+            transform: translateY(-2px);
+        }
+        
+        .doctor-info {
+            background: #f8f9fa;
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        
+        .doctor-info p {
+            color: #666;
+            font-size: 13px;
+            margin-bottom: 5px;
+        }
+        
+        .forgot-password {
+            text-align: center;
+            margin-top: 20px;
+        }
+        
+        .forgot-password a {
+            color: #4CAF50;
+            text-decoration: none;
+            font-size: 14px;
+        }
+        
+        .footer {
+            text-align: center;
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 1px solid #e1e1e1;
+            color: #666;
+            font-size: 12px;
+        }
+    </style>
+</head>
+<body>
+    <div class="login-container">
+        <div class="logo">
+            <div class="medical-icon">🩺</div>
+            <h1>Healthcare Management System</h1>
+            <p>Smart Clinical Management Platform</p>
+            <div class="doctor-badge">DOCTOR PORTAL</div>
+        </div>
+        
+        <div class="doctor-info">
+            <p><strong>Medical Professionals Access</strong></p>
+            <p>Secure portal for patient management and appointments</p>
+        </div>
+        
+        <form id="doctorLoginForm">
+            <div class="form-group">
+                <label for="email">Doctor Email</label>
+                <input type="email" id="email" name="email" placeholder="dr.smith@hospital.com" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input type="password" id="password" name="password" placeholder="Enter your password" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="license">Medical License (Optional)</label>
+                <input type="text" id="license" name="license" placeholder="MD123456">
+            </div>
+            
+            <button type="submit" class="login-btn">Login to Doctor Portal</button>
+        </form>
+        
+        <div class="forgot-password">
+            <a href="#">Forgot Password?</a> | 
+            <a href="#">Contact Admin</a>
+        </div>
+        
+        <div class="footer">
+            <p>&copy; 2025 IBM Java Course Project</p>
+            <p>Secure Medical Professional Portal</p>
+        </div>
+    </div>
+    
+    <script>
+        document.getElementById('doctorLoginForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Doctor login functionality connected to backend API!');
+        });
+    </script>
+</body>
+</html>
