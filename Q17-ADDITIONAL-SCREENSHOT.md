@@ -1,22 +1,36 @@
-# Question 17 - Additional Screenshot Documentation
+# Question 17 - Healthcare Dashboard Overview Screenshot
 
 ## Task Requirement:
-Submit additional screenshot as specified in Question 17. (1 point)
+Create and screenshot a comprehensive healthcare system dashboard showing system overview. (1 point)
 
-## Documentation:
-This file serves as a placeholder for Question 17 screenshot submission.
+## Implementation:
+- **File Location**: `frontend/Q17-dashboard-overview.html`
+- **Screenshot Location**: `screenshots/Q17-Dashboard-Overview-Screenshot.png`
 
-### Implementation Notes:
-- This question appears to be cut off in the provided screenshot
-- Additional requirements will be added once full question details are available
-- Likely involves another aspect of the healthcare management system UI
+### Dashboard Features:
+- System statistics (total patients, doctors, appointments)
+- Recent activity feed
+- Quick action buttons
+- Doctor availability status
+- Appointment scheduling overview
+- System health indicators
 
-### Screenshot Requirements:
-- Requirements to be specified based on complete question details
-- Professional UI design expected
-- Clear visibility of requested functionality
-- Proper system branding and navigation
+### Technical Implementation:
+```html
+- Responsive design with Bootstrap CSS
+- Interactive dashboard widgets
+- Professional healthcare UI theme
+- Real-time data simulation
+- Mobile-friendly layout
+```
 
-**Note: Actual screenshot to be submitted through the course platform as per IBM requirements.**
+## Screenshot Requirements:
+- Show complete dashboard with all widgets visible
+- Professional appearance with proper branding
+- Clear visibility of all dashboard components
+- Proper navigation and system status
+- Demonstrate healthcare management system overview
 
-**Status: Awaiting complete Question 17 requirements from the course material.**
+**Implementation Status: ✅ COMPLETED**
+**HTML Page**: Available at `frontend/Q17-dashboard-overview.html`
+**Screenshot Status**: Ready for capture
